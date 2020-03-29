@@ -2,8 +2,8 @@
 
 ## Description:
 
-> For the longest time, I thought it would be really useful to have a timer that doesn't stop! Every single smart phone and wearabale device has a 'stopwatch' built in however after those 30 seconds it's over. 
-
+> For the longest time, I thought it would be really useful to have a timer that doesn't stop! Every single smart phone and wearabale device has a 'stopwatch' built in however after those 30 seconds end it's over. 
+>
 > - What if I'm doing HIIT training and I want a countdown of 30 seconds on / 15 seconds off?
 >
 > - What if I'm planking and it's time to change position? Can't reset my watch because it's too awkward  / it interrupts my workout
