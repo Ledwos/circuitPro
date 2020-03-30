@@ -165,3 +165,15 @@ function checkTime(i) {
   }
   return i;
 }
+
+//   /*Reset*/
+  function reset() {
+
+  msec = 100;
+  sec = store.si - 1;
+  min = store.mi;
+
+  document.getElementById("milisec").innerHTML = '00';
+  document.getElementById("sec").innerHTML = checkTime(store.si);
+  document.getElementById("min").innerHTML = checkTime(store.mi);
+}
