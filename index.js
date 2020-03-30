@@ -138,8 +138,8 @@ function timer() {
 
   if (sec === 0 & min === 0 & msec === 0) {
     msec = 0;
-    sec = 5;
-    mout = 0;
+    sec = store.si;
+    mout = store.mi;
   }
 
   if (msec === 0) {
