@@ -137,12 +137,15 @@ function timer() {
   msec = --msec;
 
   if (sec === 0 & min === 0 & msec === 0) {
-    stop();
+    msec = 0;
+    sec = 5;
+    mout = 0;
   }
 
   if (msec === 0) {
     msec = 100;
     sec = --sec;
+    console.log(store.si);
   }
 
   if (sec === 0 & min !== 0) {
