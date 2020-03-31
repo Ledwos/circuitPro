@@ -1,3 +1,32 @@
+var store = {
+  msi: 100,
+  si: 5,
+  mi: 0
+}
+
+//user input (increment)
+
+document.getElementById("min").addEventListener("wheel", function incMin(event) {
+  if (event.deltaY < 0 ) {
+    store.mi = store.mi + 1;
+    console.log(store.mi);
+    document.getElementById("min").innerHTML = checkTime(store.mi);
+  } else if (event.deltaY > 0) {
+    store.mi === 0 ? store.mi = 0 : store.mi = store.mi - 1;
+    document.getElementById("min").innerHTML = checkTime(store.mi);
+    console.log(store.mi);
+  }
+
+});
+
+
+
+
+
+
+
+// start / stop button
+
 var startstop = 0;
 
 function startStop() { /* Toggle StartStop */
@@ -18,12 +47,6 @@ function startStop() { /* Toggle StartStop */
 // My version
 
 //store contains initial value for miliseconds as well as what will become user input
-
-var store = {
-  msi: 100,
-  si: 5,
-  mi: 0
-}
 
 function start() {
   strt = setInterval(timer, 10);
