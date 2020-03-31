@@ -99,7 +99,7 @@ function timer() {
     lap = ++lap;
   }
   
-  if (sec === 0 & msec === 0) {
+  if (sec === 0 & min !== 0) {
     min = --min;
     sec = 59;
     msec = 100
