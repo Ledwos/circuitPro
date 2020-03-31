@@ -21,7 +21,6 @@ document.getElementById("min").addEventListener("wheel", function incMin(event) 
 
 });
 
-
 // sec scroll
 
 document.getElementById("sec").addEventListener("wheel", function incSec(event) {
@@ -36,12 +35,6 @@ document.getElementById("sec").addEventListener("wheel", function incSec(event) 
   }
 
 });
-
-
-
-
-
-
 
 // start / stop button
 
@@ -115,6 +108,8 @@ function timer() {
   document.getElementById("sec").innerHTML = sout;
   document.getElementById("min").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
+
+  setText(lout);
 }
 
 function checkTime(i) {
@@ -136,4 +131,15 @@ function checkTime(i) {
   document.getElementById("sec").innerHTML = checkTime(store.si);
   document.getElementById("min").innerHTML = checkTime(store.mi);
   document.getElementById("lapCount").innerHTML = lap;
+  document.getElementById("set").innerHTML = "Ready?";
+}
+
+// conditional set text 
+
+function setText(lout) {
+  if (lout === 0 || lout % 2  === 0) {
+    document.getElementById("set").innerHTML = "RUN";
+  } else {
+    document.getElementById("set").innerHTML = "REST";
+  }
 }
