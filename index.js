@@ -1,10 +1,12 @@
 var store = {
   msi: 100,
-  si: 5,
-  mi: 0
+  si: 0,
+  mi: 1
 }
 
 //user input (increment)
+
+// min scroll
 
 document.getElementById("min").addEventListener("wheel", function incMin(event) {
   if (event.deltaY < 0 ) {
@@ -15,6 +17,21 @@ document.getElementById("min").addEventListener("wheel", function incMin(event) 
     store.mi === 0 ? store.mi = 0 : store.mi = store.mi - 1;
     document.getElementById("min").innerHTML = checkTime(store.mi);
     console.log(store.mi);
+  }
+
+});
+
+// sec scroll
+
+document.getElementById("sec").addEventListener("wheel", function incSec(event) {
+  if (event.deltaY < 0 ) {
+    store.si = store.si + 1;
+    console.log(store.si);
+    document.getElementById("sec").innerHTML = checkTime(store.si);
+  } else if (event.deltaY > 0) {
+    store.si === 0 ? store.si = 0 : store.si = store.si - 1;
+    document.getElementById("sec").innerHTML = checkTime(store.si);
+    console.log(store.si);
   }
 
 });
@@ -57,7 +74,7 @@ function stop() {
 }
 
 var msec = store.msi;
-var sec = store.si - 1;
+var sec = store.si;
 var min = store.mi;
 var lap = 0;
 
@@ -84,13 +101,13 @@ function timer() {
   if (msec === 0) {
     msec = 100;
     sec = --sec;
-    console.log(store.si);
+    // console.log(store.si);
   }
 
   if (sec === 0 & min !== 0) {
-    sec = 60;
-    msec = 100
     min = --min;
+    sec = 59;
+    msec = 100
   }
 
   document.getElementById("milisec").innerHTML = msout;
@@ -110,7 +127,7 @@ function checkTime(i) {
   function reset() {
 
   msec = 100;
-  sec = store.si - 1;
+  sec = store.si;
   min = store.mi;
   lap = 0;
 
