@@ -36,15 +36,18 @@ function stop() {
 var msec = store.msi;
 var sec = store.si - 1;
 var min = store.mi;
+var lap = 0;
 
 var msout = 0;
 var sout = 0;
 var mout = 0;
+var lout = 0;
 
 function timer() {
   msout = checkTime(msec);
   sout = checkTime(sec);
   mout = checkTime(min);
+  lout = lap;
 
   msec = --msec;
 
@@ -52,6 +55,7 @@ function timer() {
     msec = 0;
     sec = store.si;
     mout = store.mi;
+    lap = ++lap;
   }
 
   if (msec === 0) {
@@ -69,6 +73,7 @@ function timer() {
   document.getElementById("milisec").innerHTML = msout;
   document.getElementById("sec").innerHTML = sout;
   document.getElementById("min").innerHTML = mout;
+  document.getElementById("lapCount").innerHTML = lout;
 }
 
 function checkTime(i) {
@@ -84,8 +89,10 @@ function checkTime(i) {
   msec = 100;
   sec = store.si - 1;
   min = store.mi;
+  lap = 0;
 
   document.getElementById("milisec").innerHTML = '00';
   document.getElementById("sec").innerHTML = checkTime(store.si);
   document.getElementById("min").innerHTML = checkTime(store.mi);
+  document.getElementById("lapCount").innerHTML = lap;
 }
