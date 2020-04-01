@@ -1,7 +1,7 @@
 var store = {
-  msi: 100,
+  msi: 0,
   si: 0,
-  mi: 1
+  mi: 0
 }
 
 //user input (increment)
@@ -83,6 +83,11 @@ function timer() {
   mout = checkTime(min);
   lout = lap;
 
+  if (msec === 0) {
+    msec = 100;
+    sec = --sec;
+  }
+
   msec = --msec;
 
   if (sec === 0 & min === 0 & msec === 0) {
@@ -92,16 +97,12 @@ function timer() {
     lap = ++lap;
   }
   
-  if (sec === 0 & min !== 0) {
+  if (sec === 0 & msec === 0 & min !== 0) {
     min = --min;
     sec = 59;
     msec = 100
   }
 
-  if (msec === 0) {
-    msec = 100;
-    sec = --sec;
-  }
 
 
   document.getElementById("milisec").innerHTML = msout;
@@ -122,12 +123,12 @@ function checkTime(i) {
 //   /*Reset*/
   function reset() {
 
-  msec = 100;
+  msec = 0;
   sec = store.si;
   min = store.mi;
   lap = 0;
 
-  document.getElementById("milisec").innerHTML = '00';
+  document.getElementById("milisec").innerHTML = checkTime(store.msi);
   document.getElementById("sec").innerHTML = checkTime(store.si);
   document.getElementById("min").innerHTML = checkTime(store.mi);
   document.getElementById("lapCount").innerHTML = lap;
@@ -143,3 +144,16 @@ function setText(lout) {
     document.getElementById("set").innerHTML = "REST";
   }
 }
+
+
+// dis tha'ng werks:
+
+// function myFunction() {
+//   var btn = document.createElement("div");
+//   btn.setAttribute("id","testDiv");
+//   var spanner = document.createElement("span");
+//   spanner.innerHTML = "I work";
+//   document.body.appendChild(btn);  document.getElementById("testDiv").appendChild(spanner);
+// }
+
+// yasss queen
