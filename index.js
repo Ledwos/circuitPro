@@ -1,7 +1,7 @@
 var store = {
   msi: 0,
-  si: 0,
-  mi: 0
+  si: {0: 0},
+  mi: {0: 0}
 }
 
 //user input (increment)
@@ -10,13 +10,13 @@ var store = {
 
 document.getElementById("min").addEventListener("wheel", function incMin(event) {
   if (event.deltaY < 0 ) {
-    store.mi = store.mi + 1;
-    min = store.mi;
-    document.getElementById("min").innerHTML = checkTime(store.mi);
+    store.mi[0] = store.mi[0] + 1;
+    min = store.mi[0];
+    document.getElementById("min").innerHTML = checkTime(store.mi[0]);
   } else if (event.deltaY > 0) {
-    store.mi === 0 ? store.mi = 0 : store.mi = store.mi - 1;
-    document.getElementById("min").innerHTML = checkTime(store.mi);
-    min = store.mi;
+    store.mi[0] === 0 ? store.mi[0] = 0 : store.mi[0] = store.mi[0] - 1;
+    document.getElementById("min").innerHTML = checkTime(store.mi[0]);
+    min = store.mi[0];
   }
 
 });
@@ -25,13 +25,13 @@ document.getElementById("min").addEventListener("wheel", function incMin(event) 
 
 document.getElementById("sec").addEventListener("wheel", function incSec(event) {
   if (event.deltaY < 0 ) {
-    store.si = store.si + 1;
-    sec = store.si;
-    document.getElementById("sec").innerHTML = checkTime(store.si);
+    store.si[0] = store.si[0] + 1;
+    sec = store.si[0];
+    document.getElementById("sec").innerHTML = checkTime(store.si[0]);
   } else if (event.deltaY > 0) {
-    store.si === 0 ? store.si = 0 : store.si = store.si - 1;
-    document.getElementById("sec").innerHTML = checkTime(store.si);
-    sec = store.si;
+    store.si[0] === 0 ? store.si[0] = 0 : store.si[0] = store.si[0] - 1;
+    document.getElementById("sec").innerHTML = checkTime(store.si[0]);
+    sec = store.si[0];
   }
 
 });
@@ -68,8 +68,8 @@ function stop() {
 }
 
 var msec = store.msi;
-var sec = store.si;
-var min = store.mi;
+var sec = parseInt(store.si[0]);
+var min = parseInt(store.mi[0]);
 var lap = 0;
 
 var msout = 0;
@@ -84,9 +84,9 @@ function timer() {
   lout = lap;
   
   if (sec === 0 & min === 0 & msec === 0) {
-    msec = store.si;
-    sec = store.si;
-    min = store.mi;
+    msec = store.msi;
+    sec = store.si[0];
+    min = store.mi[0];
     lap = ++lap;
   }
 
@@ -122,13 +122,13 @@ function checkTime(i) {
   function reset() {
 
   msec = 0;
-  sec = store.si;
-  min = store.mi;
+  sec = store.si[0];
+  min = store.mi[0];
   lap = 0;
 
   document.getElementById("milisec").innerHTML = checkTime(store.msi);
-  document.getElementById("sec").innerHTML = checkTime(store.si);
-  document.getElementById("min").innerHTML = checkTime(store.mi);
+  document.getElementById("sec").innerHTML = checkTime(store.si[0]);
+  document.getElementById("min").innerHTML = checkTime(store.mi[0]);
   document.getElementById("lapCount").innerHTML = lap;
   document.getElementById("set").innerHTML = "Ready?";
 }
@@ -175,6 +175,6 @@ function addTimer() {
   
   //render elements in their appropriate places
   tim.innerHTML += mspan.outerHTML + " : " + sspan.outerHTML + " : " + msspan.outerHTML;
-  document.body.appendChild(tim);
+  document.getElementById("timeBox").appendChild(tim);
 
 }
