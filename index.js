@@ -103,10 +103,6 @@ function timer() {
 
   msec = --msec;
 
-  
-
-
-
   document.getElementById("milisec").innerHTML = msout;
   document.getElementById("sec").innerHTML = sout;
   document.getElementById("min").innerHTML = mout;
@@ -159,3 +155,26 @@ function setText(lout) {
 // }
 
 // yasss queen
+
+// generate additional timer (to build circuit)
+
+function addTimer() {
+
+  //make all elements
+  var tim = document.createElement("h1");
+  tim.setAttribute("id", "testTimer");
+  var mspan = document.createElement("span");
+  mspan.setAttribute("id", "min1");
+  mspan.innerHTML = "00";
+  var sspan = document.createElement("span");
+  sspan.setAttribute("id", "sec1");
+  sspan.innerHTML = "00";
+  var msspan = document.createElement("span");
+  msspan.setAttribute("id", "msec1");  
+  msspan.innerHTML = "00";
+  
+  //render elements in their appropriate places
+  tim.innerHTML += mspan.outerHTML + " : " + sspan.outerHTML + " : " + msspan.outerHTML;
+  document.body.appendChild(tim);
+
+}
