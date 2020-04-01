@@ -82,7 +82,20 @@ function timer() {
   sout = checkTime(sec);
   mout = checkTime(min);
   lout = lap;
+  
+  if (sec === 0 & min === 0 & msec === 0) {
+    msec = store.si;
+    sec = store.si;
+    min = store.mi;
+    lap = ++lap;
+  }
 
+  if (sec === 0 & msec === 0 & min !== 0) {
+    min = --min;
+    sec = 59;
+    msec = 100
+  }
+  
   if (msec === 0) {
     msec = 100;
     sec = --sec;
@@ -90,18 +103,7 @@ function timer() {
 
   msec = --msec;
 
-  if (sec === 0 & min === 0 & msec === 0) {
-    msec = 0;
-    sec = store.si;
-    mout = store.mi;
-    lap = ++lap;
-  }
   
-  if (sec === 0 & msec === 0 & min !== 0) {
-    min = --min;
-    sec = 59;
-    msec = 100
-  }
 
 
 
