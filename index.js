@@ -6,35 +6,62 @@ var store = {
 
 //user input (increment)
 
+//scroll test
+
+document.addEventListener("wheel", function(event) {
+
+  var spanId = null;
+  var spanNum = null;
+
+  if (event.target.nodeName == "SPAN") {
+    spanId = String(event.target.id).substring(0,2);
+    spanNum = String(event.target.id).slice(-1);
+  }
+
+  if (spanId == "mi" | spanId == "si") {
+    // console.log(store[spanId][0]);
+    if (event.deltaY < 0 ) {
+      store[spanId][spanNum] = store[spanId][spanNum] + 1;
+      // min = store.mi[0]; <-- CHECK IF THIS IS NEEDS TO BE HERE
+      document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
+    } else if (event.deltaY > 0) {
+      store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
+      document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
+      // min = store.mi[0]; <-- CHECK IF THIS IS NEEDS TO BE HERE
+    }
+  }
+
+})
+
 // min scroll
 
-document.getElementById("min").addEventListener("wheel", function incMin(event) {
-  if (event.deltaY < 0 ) {
-    store.mi[0] = store.mi[0] + 1;
-    min = store.mi[0];
-    document.getElementById("min").innerHTML = checkTime(store.mi[0]);
-  } else if (event.deltaY > 0) {
-    store.mi[0] === 0 ? store.mi[0] = 0 : store.mi[0] = store.mi[0] - 1;
-    document.getElementById("min").innerHTML = checkTime(store.mi[0]);
-    min = store.mi[0];
-  }
+// document.getElementById("min").addEventListener("wheel", function incMin(event) {
+//   if (event.deltaY < 0 ) {
+//     store.mi[0] = store.mi[0] + 1;
+//     min = store.mi[0];
+//     document.getElementById("min").innerHTML = checkTime(store.mi[0]);
+//   } else if (event.deltaY > 0) {
+//     store.mi[0] === 0 ? store.mi[0] = 0 : store.mi[0] = store.mi[0] - 1;
+//     document.getElementById("min").innerHTML = checkTime(store.mi[0]);
+//     min = store.mi[0];
+//   }
 
-});
+// });
 
-// sec scroll
+// // sec scroll
 
-document.getElementById("sec").addEventListener("wheel", function incSec(event) {
-  if (event.deltaY < 0 ) {
-    store.si[0] = store.si[0] + 1;
-    sec = store.si[0];
-    document.getElementById("sec").innerHTML = checkTime(store.si[0]);
-  } else if (event.deltaY > 0) {
-    store.si[0] === 0 ? store.si[0] = 0 : store.si[0] = store.si[0] - 1;
-    document.getElementById("sec").innerHTML = checkTime(store.si[0]);
-    sec = store.si[0];
-  }
+// document.getElementById("sec").addEventListener("wheel", function incSec(event) {
+//   if (event.deltaY < 0 ) {
+//     store.si[0] = store.si[0] + 1;
+//     sec = store.si[0];
+//     document.getElementById("sec").innerHTML = checkTime(store.si[0]);
+//   } else if (event.deltaY > 0) {
+//     store.si[0] === 0 ? store.si[0] = 0 : store.si[0] = store.si[0] - 1;
+//     document.getElementById("sec").innerHTML = checkTime(store.si[0]);
+//     sec = store.si[0];
+//   }
 
-});
+// });
 
 // start / stop button
 
@@ -166,9 +193,9 @@ function addTimer() {
 
   //make unique span id's
   var idNum = document.querySelectorAll('.interval').length;
-  var minId = "min" + idNum;
-  var secId = "sec" + idNum;
-  var msecId = "milisec" + idNum;
+  var minId = "mi" + idNum;
+  var secId = "si" + idNum;
+  var msecId = "msi" + idNum;
 
   //make all elements
   var tim = document.createElement("h1");
