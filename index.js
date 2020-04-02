@@ -1,7 +1,7 @@
 var store = {
   msi: 0,
-  si: {0: 0},
-  mi: {0: 0}
+  si: [0],
+  mi: [0]
 }
 
 //user input (increment)
@@ -160,17 +160,27 @@ function setText(lout) {
 
 function addTimer() {
 
+  //extend store arrays to accomodate no. of timers
+  store.mi.push(1);
+  store.si.push(2);
+
+  //make unique span id's
+  var idNum = document.querySelectorAll('.interval').length;
+  var minId = "min" + idNum;
+  var secId = "sec" + idNum;
+  var msecId = "milisec" + idNum;
+
   //make all elements
   var tim = document.createElement("h1");
-  tim.setAttribute("id", "testTimer");
+  tim.setAttribute("class", "interval");
   var mspan = document.createElement("span");
-  mspan.setAttribute("id", "min1");
+  mspan.setAttribute("id", `${minId}`);
   mspan.innerHTML = "00";
   var sspan = document.createElement("span");
-  sspan.setAttribute("id", "sec1");
+  sspan.setAttribute("id", `${secId}`);
   sspan.innerHTML = "00";
   var msspan = document.createElement("span");
-  msspan.setAttribute("id", "msec1");  
+  msspan.setAttribute("id", `${msecId}`);  
   msspan.innerHTML = "00";
   
   //render elements in their appropriate places
