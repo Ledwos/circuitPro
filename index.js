@@ -22,12 +22,12 @@ document.addEventListener("wheel", function(event) {
     // console.log(store[spanId][0]);
     if (event.deltaY < 0 ) {
       store[spanId][spanNum] = store[spanId][spanNum] + 1;
-      // min = store.mi[0]; <-- CHECK IF THIS IS NEEDS TO BE HERE
+      spanId == "mi" ?  min = store[spanId][spanNum] : sec = store[spanId][spanNum]; //potential fix? can't test till I update timer
       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
     } else if (event.deltaY > 0) {
       store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
+      spanId == "mi" ?  min = store[spanId][spanNum] : sec = store[spanId][spanNum]; //potential fix? can't test till I update timer
       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
-      // min = store.mi[0]; <-- CHECK IF THIS IS NEEDS TO BE HERE
     }
   }
 
@@ -130,9 +130,9 @@ function timer() {
 
   msec = --msec;
 
-  document.getElementById("milisec").innerHTML = msout;
-  document.getElementById("sec").innerHTML = sout;
-  document.getElementById("min").innerHTML = mout;
+  document.getElementById("msi0").innerHTML = msout;
+  document.getElementById("si0").innerHTML = sout;
+  document.getElementById("mi0").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
 
   setText(lout);
@@ -153,9 +153,9 @@ function checkTime(i) {
   min = store.mi[0];
   lap = 0;
 
-  document.getElementById("milisec").innerHTML = checkTime(store.msi);
-  document.getElementById("sec").innerHTML = checkTime(store.si[0]);
-  document.getElementById("min").innerHTML = checkTime(store.mi[0]);
+  document.getElementById("msi0").innerHTML = checkTime(store.msi);
+  document.getElementById("si0").innerHTML = checkTime(store.si[0]);
+  document.getElementById("mi0").innerHTML = checkTime(store.mi[0]);
   document.getElementById("lapCount").innerHTML = lap;
   document.getElementById("set").innerHTML = "Ready?";
 }
