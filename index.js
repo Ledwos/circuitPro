@@ -87,6 +87,10 @@ function startStop() { /* Toggle StartStop */
 //store contains initial value for miliseconds as well as what will become user input
 
 function start() {
+  msec = 0;
+  sec = store.si[0];
+  min = store.mi[0];
+  lap = 0;
   strt = setInterval(timer, 10);
 }
 
