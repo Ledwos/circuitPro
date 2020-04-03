@@ -94,6 +94,7 @@ function stop() {
   clearInterval(strt);
 }
 
+var cTrack = 0;
 var msec = store.msi;
 var sec = parseInt(store.si[0]);
 var min = parseInt(store.mi[0]);
@@ -112,9 +113,10 @@ function timer() {
   
   if (sec === 0 & min === 0 & msec === 0) {
     msec = store.msi;
-    sec = store.si[0];
-    min = store.mi[0];
+    sec = store.si[cTrack];
+    min = store.mi[cTrack];
     lap = ++lap;
+    cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
   }
 
   if (sec === 0 & msec === 0 & min !== 0) {
@@ -130,9 +132,9 @@ function timer() {
 
   msec = --msec;
 
-  document.getElementById("msi0").innerHTML = msout;
-  document.getElementById("si0").innerHTML = sout;
-  document.getElementById("mi0").innerHTML = mout;
+  document.getElementById("milisec").innerHTML = msout;
+  document.getElementById("sec").innerHTML = sout;
+  document.getElementById("min").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
 
   setText(lout);
@@ -153,9 +155,9 @@ function checkTime(i) {
   min = store.mi[0];
   lap = 0;
 
-  document.getElementById("msi0").innerHTML = checkTime(store.msi);
-  document.getElementById("si0").innerHTML = checkTime(store.si[0]);
-  document.getElementById("mi0").innerHTML = checkTime(store.mi[0]);
+  document.getElementById("milisec").innerHTML = checkTime(store.msi);
+  document.getElementById("sec").innerHTML = checkTime(store.si[0]);
+  document.getElementById("min").innerHTML = checkTime(store.mi[0]);
   document.getElementById("lapCount").innerHTML = lap;
   document.getElementById("set").innerHTML = "Ready?";
 }
@@ -188,8 +190,8 @@ function setText(lout) {
 function addTimer() {
 
   //extend store arrays to accomodate no. of timers
-  store.mi.push(1);
-  store.si.push(2);
+  store.mi.push(0);
+  store.si.push(0);
 
   //make unique span id's
   var idNum = document.querySelectorAll('.interval').length;
