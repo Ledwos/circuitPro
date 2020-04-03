@@ -154,10 +154,10 @@ function checkTime(i) {
 //   /*Reset*/
   function reset() {
 
-  msec = 0;
-  sec = store.si[0];
-  min = store.mi[0];
-  lap = 0;
+  var msec = 0;
+  var sec = store.si[0];
+  var min = store.mi[0];
+  var lap = 0;
 
   document.getElementById("milisec").innerHTML = checkTime(msec);
   document.getElementById("sec").innerHTML = checkTime(sec);
