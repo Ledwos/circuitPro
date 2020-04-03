@@ -116,11 +116,11 @@ function timer() {
   lout = lap;
   
   if (sec === 0 & min === 0 & msec === 0) {
+    cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
     msec = store.msi;
     sec = store.si[cTrack];
     min = store.mi[cTrack];
     lap = ++lap;
-    cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
   }
 
   if (sec === 0 & msec === 0 & min !== 0) {
