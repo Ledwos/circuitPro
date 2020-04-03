@@ -22,11 +22,11 @@ document.addEventListener("wheel", function(event) {
     // console.log(store[spanId][0]);
     if (event.deltaY < 0 ) {
       store[spanId][spanNum] = store[spanId][spanNum] + 1;
-      spanId == "mi" ?  min = store[spanId][spanNum] : sec = store[spanId][spanNum]; //potential fix? can't test till I update timer
+      spanId == "mi" ?  min = store[spanId][0] : sec = store[spanId][0]; //potential fix? can't test till I update timer
       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
     } else if (event.deltaY > 0) {
       store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
-      spanId == "mi" ?  min = store[spanId][spanNum] : sec = store[spanId][spanNum]; //potential fix? can't test till I update timer
+      spanId == "mi" ?  min = store[spanId][0] : sec = store[spanId][0]; //potential fix? can't test till I update timer
       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
     }
   }
@@ -96,8 +96,8 @@ function stop() {
 
 var cTrack = 0;
 var msec = store.msi;
-var sec = parseInt(store.si[0]);
-var min = parseInt(store.mi[0]);
+var sec = store.si[0];
+var min = store.mi[0];
 var lap = 0;
 
 var msout = 0;
