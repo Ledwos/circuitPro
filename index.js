@@ -4,9 +4,7 @@ var store = {
   mi: [0]
 }
 
-//user input (increment)
-
-//scroll test
+//user input (scroll increment)
 
 document.addEventListener("wheel", function(event) {
 
@@ -33,36 +31,6 @@ document.addEventListener("wheel", function(event) {
 
 })
 
-// min scroll
-
-// document.getElementById("min").addEventListener("wheel", function incMin(event) {
-//   if (event.deltaY < 0 ) {
-//     store.mi[0] = store.mi[0] + 1;
-//     min = store.mi[0];
-//     document.getElementById("min").innerHTML = checkTime(store.mi[0]);
-//   } else if (event.deltaY > 0) {
-//     store.mi[0] === 0 ? store.mi[0] = 0 : store.mi[0] = store.mi[0] - 1;
-//     document.getElementById("min").innerHTML = checkTime(store.mi[0]);
-//     min = store.mi[0];
-//   }
-
-// });
-
-// // sec scroll
-
-// document.getElementById("sec").addEventListener("wheel", function incSec(event) {
-//   if (event.deltaY < 0 ) {
-//     store.si[0] = store.si[0] + 1;
-//     sec = store.si[0];
-//     document.getElementById("sec").innerHTML = checkTime(store.si[0]);
-//   } else if (event.deltaY > 0) {
-//     store.si[0] === 0 ? store.si[0] = 0 : store.si[0] = store.si[0] - 1;
-//     document.getElementById("sec").innerHTML = checkTime(store.si[0]);
-//     sec = store.si[0];
-//   }
-
-// });
-
 // start / stop button
 
 var startstop = 0;
@@ -82,21 +50,14 @@ function startStop() { /* Toggle StartStop */
 
 }
 
-// My version
-
-//store contains initial value for miliseconds as well as what will become user input
-
 var tim0 = false
 
 function start() {
-  // msec = 0;
-  // sec = store.si[0];
-  // min = store.mi[0];
-  // lap = 0;
   initial()
   strt = setInterval(timer, 10);
 }
 
+// updates the timer with first set of user input values ONCE
 function initial() {
   if (!tim0) {
     msec = 0;
@@ -112,6 +73,7 @@ function stop() {
   clearInterval(strt);
 }
 
+// timer variables
 var cTrack = 0;
 var msec = 0;
 var sec = store.si[0];
@@ -154,7 +116,6 @@ function timer() {
   document.getElementById("sec").innerHTML = sout;
   document.getElementById("min").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
-
   setText(lout);
 }
 
@@ -190,19 +151,6 @@ function setText(lout) {
     document.getElementById("set").innerHTML = "REST";
   }
 }
-
-
-// dis tha'ng werks:
-
-// function myFunction() {
-//   var btn = document.createElement("div");
-//   btn.setAttribute("id","testDiv");
-//   var spanner = document.createElement("span");
-//   spanner.innerHTML = "I work";
-//   document.body.appendChild(btn);  document.getElementById("testDiv").appendChild(spanner);
-// }
-
-// yasss queen
 
 // generate additional timer (to build circuit)
 
