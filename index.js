@@ -86,12 +86,26 @@ function startStop() { /* Toggle StartStop */
 
 //store contains initial value for miliseconds as well as what will become user input
 
+var tim0 = false
+
 function start() {
-  msec = 0;
-  sec = store.si[0];
-  min = store.mi[0];
-  lap = 0;
+  // msec = 0;
+  // sec = store.si[0];
+  // min = store.mi[0];
+  // lap = 0;
+  initial()
   strt = setInterval(timer, 10);
+}
+
+function initial() {
+  if (!tim0) {
+    msec = 0;
+    sec = store.si[0];
+    min = store.mi[0];
+    // lap = 0;
+    tim0 = true;
+  }
+  
 }
 
 function stop() {
@@ -104,16 +118,16 @@ var sec = store.si[0];
 var min = store.mi[0];
 var lap = 0;
 
-var msout = 0;
-var sout = 0;
-var mout = 0;
-var lout = 0;
+// var msout = 0;
+// var sout = 0;
+// var mout = 0;
+// var lout = 0; don't need these here? works as intended with the var being declared within the timer function
 
 function timer() {
-  msout = checkTime(msec);
-  sout = checkTime(sec);
-  mout = checkTime(min);
-  lout = lap;
+  var msout = checkTime(msec);
+  var sout = checkTime(sec);
+  var mout = checkTime(min);
+  var lout = lap;
   
   if (sec === 0 & min === 0 & msec === 0) {
     cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
@@ -154,10 +168,11 @@ function checkTime(i) {
 //   /*Reset*/
   function reset() {
 
-  var msec = 0;
-  var sec = store.si[0];
-  var min = store.mi[0];
-  var lap = 0;
+  msec = 0;
+  sec = store.si[0];
+  min = store.mi[0];
+  lap = 0;
+  tim0 = false;
 
   document.getElementById("milisec").innerHTML = checkTime(msec);
   document.getElementById("sec").innerHTML = checkTime(sec);
