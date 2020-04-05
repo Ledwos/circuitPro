@@ -169,8 +169,13 @@ function addTimer() {
   //make all elements
   var timBox = document.createElement("div");
   timBox.setAttribute("class", "timeBox");
+  var divLeft = document.createElement("div");
+  divLeft.setAttribute("class", "timLeft");
+  var divRight = document.createElement("div");
+  divRight.setAttribute("class", "timRight");
   var remBtn = document.createElement("button");
   remBtn.setAttribute("id", `rem${idNum}`);
+  remBtn.innerHTML = "X";
   var tim = document.createElement("h1");
   tim.setAttribute("class", "interval");
   var mspan = document.createElement("span");
@@ -189,7 +194,9 @@ function addTimer() {
   
   //render elements in their appropriate places
   tim.innerHTML += mspan.outerHTML + " : " + sspan.outerHTML + " : " + msspan.outerHTML;
-  timBox.innerHTML += remBtn.outerHTML + tim.outerHTML + actInput.outerHTML;
+  divLeft.innerHTML += remBtn.outerHTML;
+  divRight.innerHTML += tim.outerHTML + actInput.outerHTML;
+  timBox.innerHTML += divLeft.outerHTML + divRight.outerHTML;
   document.getElementById("UiBox").appendChild(timBox);
 
 }
