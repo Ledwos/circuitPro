@@ -169,12 +169,14 @@ function addTimer() {
   //make all elements
   var timBox = document.createElement("div");
   timBox.setAttribute("class", "timeBox");
+  timBox.setAttribute("id", `t${idNum}`);
   var divLeft = document.createElement("div");
   divLeft.setAttribute("class", "timLeft");
   var divRight = document.createElement("div");
   divRight.setAttribute("class", "timRight");
   var remBtn = document.createElement("button");
   remBtn.setAttribute("id", `rem${idNum}`);
+  remBtn.setAttribute("onclick","remDiv(this.id)");
   remBtn.innerHTML = "X";
   var tim = document.createElement("h1");
   tim.setAttribute("class", "interval");
@@ -199,4 +201,11 @@ function addTimer() {
   timBox.innerHTML += divLeft.outerHTML + divRight.outerHTML;
   document.getElementById("UiBox").appendChild(timBox);
 
+}
+
+//removeButton - deletes timer
+function remDiv(remId) {
+  var btnId = String(remId).slice(-1);
+  var timId = String("t" + btnId);
+  document.getElementById(timId).remove();
 }
