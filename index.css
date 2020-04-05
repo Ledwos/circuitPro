@@ -12,7 +12,7 @@ body {
     padding: 20px 0px 20px 0px;
 }
 
-#mainTimer, #set, #btnDiv, #timeBox, #addTimer {
+#mainTimer, #set, #btnDiv, .timeBox, #addTimer {
     /* border: 2px solid blue; */
 }
 
@@ -33,7 +33,7 @@ body {
     justify-content: space-evenly;
 }
 
-#timeBox {
+.timeBox {
     display: flex;
     flex-direction: column;
     width: 35%;

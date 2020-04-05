@@ -167,6 +167,10 @@ function addTimer() {
   var msecId = "msi" + idNum;
 
   //make all elements
+  var timBox = document.createElement("div");
+  timBox.setAttribute("class", "timeBox");
+  var remBtn = document.createElement("button");
+  remBtn.setAttribute("id", `rem${idNum}`);
   var tim = document.createElement("h1");
   tim.setAttribute("class", "interval");
   var mspan = document.createElement("span");
@@ -178,9 +182,14 @@ function addTimer() {
   var msspan = document.createElement("span");
   msspan.setAttribute("id", `${msecId}`);  
   msspan.innerHTML = "00";
+  var actInput = document.createElement("input");
+  actInput.setAttribute("class", "activityBox");
+  actInput.setAttribute("type", "text");
+  actInput.setAttribute("placeholder", "activity");
   
   //render elements in their appropriate places
   tim.innerHTML += mspan.outerHTML + " : " + sspan.outerHTML + " : " + msspan.outerHTML;
-  document.getElementById("timeBox").appendChild(tim);
+  timBox.innerHTML += remBtn.outerHTML + tim.outerHTML + actInput.outerHTML;
+  document.getElementById("UiBox").appendChild(timBox);
 
 }
