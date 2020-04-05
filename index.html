@@ -5,30 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Circuit Pro</title>
     <script type='text/javascript' src='index.js'></script>
+    <link type="text/css" href='./index.css' rel="stylesheet">
 </head>
 <body>
-    <div id="timeBox">
-        <h1 class="interval">
-            <span id="mi0">00</span> :
-            <span id="si0">00</span> :
-            <span id="msi0">00</span>
-        </h1>  
+    <div id="DisplayBox">
+        <h1 id="maintTimer">
+            <span id="min">00</span> :
+            <span id="sec">00</span> :
+            <span id="milisec">00</span>
+        </h1>
+        <h2 id='set'>Ready?</h2>
+        <div id='btnDiv'>
+            <button onclick="startStop()" id="start">Start</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+    <div id="UiBox">
+        <!-- change id timeBox to class? -->
+        <div id="timeBox">
+            <h1 class="interval">
+                <span id="mi0">00</span> :
+                <span id="si0">00</span> :
+                <span id="msi0">00</span>
+            </h1>  
+        </div>
+        <button onclick="addTimer()" id="addTimer">+</button>
     </div>
 
-    <button onclick="addTimer()" id="addTimer">+</button>
+
+
+
       
-    <button onclick="startStop()" id="start">Start</button>
-    <button onclick="reset()">Reset</button>
-      
+      <!-- where do laps go? -->
     <p>laps: <span id="lapCount">0</span></p>
 
-    <h2 id='set'>Ready?</h2>
 
-    <h1 id="maintTimer">
-        <span id="min">00</span> :
-        <span id="sec">00</span> :
-        <span id="milisec">00</span>
-    </h1>
 
 
     
