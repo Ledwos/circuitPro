@@ -36,9 +36,7 @@ document.addEventListener("wheel", function(event) {
 var startstop = 0;
 
 function startStop() { /* Toggle StartStop */
-
-  startstop = startstop + 1;
-
+  store.si[0] == 0 & store.mi[0] == 0 ? alert("Fill out atleast 1 timer") : startstop = startstop + 1;
   if (startstop === 1) {
     start();
     document.getElementById("start").innerHTML = "Stop";
@@ -53,8 +51,8 @@ function startStop() { /* Toggle StartStop */
 var tim0 = false
 
 function start() {
-  initial()
-  strt = setInterval(timer, 10);
+    initial()
+    strt = setInterval(timer, 10);
 }
 
 // updates the timer with first set of user input values ONCE
