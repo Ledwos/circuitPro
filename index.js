@@ -1,5 +1,5 @@
 var store = {
-  msi: 0,
+  ai: [0],
   si: [0],
   mi: [0]
 }
@@ -93,7 +93,7 @@ function timer() {
   
   if (sec === 0 & min === 0 & msec === 0) {
     cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
-    msec = store.msi;
+    msec = 0;
     sec = store.si[cTrack];
     min = store.mi[cTrack];
     lap = ++lap;
@@ -208,4 +208,21 @@ function remDiv(remId) {
   var btnId = String(remId).slice(-1);
   var timId = String("t" + btnId);
   document.getElementById(timId).remove();
+}
+
+
+//update activity input on change
+
+window.onload = function() {
+  const actiBox = document.querySelector("input")
+  
+  actiBox.addEventListener("change", (event) => {
+    // var aStr = String(event.target.id).substring(0,2);
+    var aNum = String(event.target.id).slice(-1)
+    // console.log(aNum);
+    var aText = String(event.target.value);
+    console.log(aText);
+    
+    store.ai[aNum] = aText;
+  })
 }
