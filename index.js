@@ -7,19 +7,32 @@ var store = {
 
 //update activity input on change
 
-window.onload = function() {
-  const actiBox = document.querySelector("input")
+// window.onload = function() {
+//   const actiBox = document.querySelectorAll("input")
   
-  actiBox.addEventListener("change", (event) => {
-    // var aStr = String(event.target.id).substring(0,2);
-    var aNum = String(event.target.id).slice(-1)
-    // console.log(aNum);
+//   actiBox.addEventListener("change", (event) => {
+//     // var aStr = String(event.target.id).substring(0,2);
+//     var aNum = String(event.target.id).slice(-1)
+//     // console.log(aNum);
+//     var aText = String(event.target.value);
+//     console.log(aText);
+    
+//     store.ai[aNum] = aText;
+//   })
+// }
+
+
+document.addEventListener("change", (event) => {
+
+  if (event.target.nodeName == "INPUT") {
+    var aNum = event.target.id.slice(-1);
     var aText = String(event.target.value);
-    console.log(aText);
+    console.log(`IdNum: ${aNum}, aText: ${aText}`);
     
     store.ai[aNum] = aText;
-  })
-}
+  }
+  
+})
 
 //user input (scroll increment)
 
@@ -102,12 +115,19 @@ var lap = 0;
 // var mout = 0;
 // var lout = 0; don't need these here? works as intended with the var being declared within the timer function
 
+var msout = checkTime(msec);
+var sout = checkTime(sec);
+var mout = checkTime(min);
+var aout = activity;
+var lout = lap;
+
+
 function timer() {
-  var msout = checkTime(msec);
-  var sout = checkTime(sec);
-  var mout = checkTime(min);
-  var aout = activity;
-  var lout = lap;
+  msout = checkTime(msec);
+  sout = checkTime(sec);
+  mout = checkTime(min);
+  aout = activity;
+  lout = lap;
 
   
   if (sec === 0 & min === 0 & msec === 0) {
@@ -178,6 +198,7 @@ function checkTime(i) {
 function addTimer() {
 
   //extend store arrays to accomodate no. of timers
+  store.ai.push(0);
   store.mi.push(0);
   store.si.push(0);
 
@@ -212,6 +233,7 @@ function addTimer() {
   msspan.innerHTML = "00";
   var actInput = document.createElement("input");
   actInput.setAttribute("class", "activityBox");
+  actInput.setAttribute("id", `ai${idNum}`);
   actInput.setAttribute("type", "text");
   actInput.setAttribute("placeholder", "activity");
   
