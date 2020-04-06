@@ -135,7 +135,7 @@ function timer() {
     msec = 0;
     sec = store.si[cTrack];
     min = store.mi[cTrack];
-    aout = store.ai[cTrack];
+    activity = store.ai[cTrack];
     lap = ++lap;
   }
 
