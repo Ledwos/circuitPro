@@ -4,6 +4,23 @@ var store = {
   mi: [0]
 }
 
+
+//update activity input on change
+
+window.onload = function() {
+  const actiBox = document.querySelector("input")
+  
+  actiBox.addEventListener("change", (event) => {
+    // var aStr = String(event.target.id).substring(0,2);
+    var aNum = String(event.target.id).slice(-1)
+    // console.log(aNum);
+    var aText = String(event.target.value);
+    console.log(aText);
+    
+    store.ai[aNum] = aText;
+  })
+}
+
 //user input (scroll increment)
 
 document.addEventListener("wheel", function(event) {
@@ -60,6 +77,7 @@ function start() {
 // updates the timer with first set of user input values ONCE
 function initial() {
   if (!tim0) {
+    activity = store.ai[0];
     msec = 0;
     sec = store.si[0];
     min = store.mi[0];
@@ -75,6 +93,7 @@ function stop() {
 
 // timer variables
 var cTrack = 0;
+var activity = store.ai[0];
 var msec = 0;
 var sec = store.si[0];
 var min = store.mi[0];
@@ -89,13 +108,16 @@ function timer() {
   var msout = checkTime(msec);
   var sout = checkTime(sec);
   var mout = checkTime(min);
+  var aout = activity;
   var lout = lap;
+
   
   if (sec === 0 & min === 0 & msec === 0) {
     cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
     msec = 0;
     sec = store.si[cTrack];
     min = store.mi[cTrack];
+    aout = store.ai[cTrack];
     lap = ++lap;
   }
 
@@ -116,7 +138,8 @@ function timer() {
   document.getElementById("sec").innerHTML = sout;
   document.getElementById("min").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
-  setText(lout);
+  document.getElementById("set").innerHTML = aout;
+  // setText(lout);
 }
 
 function checkTime(i) {
@@ -144,13 +167,13 @@ function checkTime(i) {
 
 // conditional set text 
 
-function setText(lout) {
-  if (lout === 0 || lout % 2  === 0) {
-    document.getElementById("set").innerHTML = "RUN";
-  } else {
-    document.getElementById("set").innerHTML = "REST";
-  }
-}
+// function setText(lout) {
+//   if (lout === 0 || lout % 2  === 0) {
+//     document.getElementById("set").innerHTML = "RUN";
+//   } else {
+//     document.getElementById("set").innerHTML = "REST";
+//   }
+// }
 
 // generate additional timer (to build circuit)
 
@@ -211,18 +234,3 @@ function remDiv(remId) {
 }
 
 
-//update activity input on change
-
-window.onload = function() {
-  const actiBox = document.querySelector("input")
-  
-  actiBox.addEventListener("change", (event) => {
-    // var aStr = String(event.target.id).substring(0,2);
-    var aNum = String(event.target.id).slice(-1)
-    // console.log(aNum);
-    var aText = String(event.target.value);
-    console.log(aText);
-    
-    store.ai[aNum] = aText;
-  })
-}
