@@ -131,12 +131,11 @@ function timer() {
 
   
   if (sec === 0 & min === 0 & msec === 0) {
-    cTrack === store.si.length - 1 ? cTrack = parseInt(0) : cTrack = ++cTrack;
+    cTrack === store.si.length - 1 ? (cTrack = parseInt(0), lap = ++lap) : cTrack = ++cTrack;
     msec = 0;
     sec = store.si[cTrack];
     min = store.mi[cTrack];
     activity = store.ai[cTrack];
-    lap = ++lap;
   }
 
   if (sec === 0 & msec === 0 & min !== 0) {
