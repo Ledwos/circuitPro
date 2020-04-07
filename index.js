@@ -26,10 +26,39 @@ document.addEventListener("change", (event) => {
 
   if (event.target.nodeName == "INPUT") {
     var aNum = event.target.id.slice(-1);
-    var aText = String(event.target.value);
-    console.log(`IdNum: ${aNum}, aText: ${aText}`);
+    var aStr = String(event.target.id).substring(0,2);
+    var aText = event.target.value;
+    console.log(`Id: ${aStr}${aNum}, aText: ${aText}`);
+
+    if (aStr == "ai") {
+      store.ai[aNum] = String(aText);
+    }
+
+    if (aStr == "mi") {
+      if (parseInt(aText) > 99) {
+        store.mi[aNum] = 99;
+      } else if (parseInt(aText) < 0) {
+        store.mi[aNum] = 0;
+      } else if (aText == "") {
+        store.mi[aNum] = 0;
+      } else {
+        store.mi[aNum] = parseInt(aText);
+      }
+    }
+
+    if (aStr == "si") {
+      if (parseInt(aText) > 59) {
+        store.si[aNum] = 59;
+      } else if (parseInt(aText) < 0) {
+        store.si[aNum] = 0;
+      } else if (aText == "") {
+        store.si[aNum] = 0;
+      } 
+      else {
+        store.si[aNum] = parseInt(aText);
+      }
+    }
     
-    store.ai[aNum] = aText;
   }
   
 })
