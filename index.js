@@ -219,9 +219,25 @@ function addTimer() {
 
 //removeButton - deletes timer
 function remDiv(remId) {
+  var storeLen = store.si.length;
   var btnId = String(remId).slice(-1);
+  var idNum = parseInt(remId.slice(-1));
   var timId = String("t" + btnId);
   document.getElementById(timId).remove();
+  
+  //remove timer settings from array
+  store.si.splice(idNum, 1);
+  store.mi.splice(idNum, 1);
+  store.ai.splice(idNum, 1);
+
+  //rewrite timer id's
+  for (x = (idNum + 1); x < storeLen ; x++) {
+    document.getElementById(`t${x}`).id = `t${x - 1}`;
+    document.getElementById(`rem${x}`).id = `rem${x - 1}`;
+    document.getElementById(`mi${x}`).id = `mi${x - 1}`;
+    document.getElementById(`si${x}`).id = `si${x - 1}`;
+    document.getElementById(`ai${x}`).id = `ai${x - 1}`;
+  }
 }
 
 
