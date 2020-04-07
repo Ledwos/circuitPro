@@ -9,6 +9,7 @@
 </head>
 <body>
     <div id="DisplayBox">
+        <h2 id="lapBox">Laps: <span id="lapCount">0</span></h2>
         <h1 id="mainTimer">
             <span id="min">00</span> :
             <span id="sec">00</span> :
@@ -22,25 +23,14 @@
     </div>
     <div id="UiBox">
         <div class="timeBox">
-            <h1 class="interval">
+            <div id='keyHeader'><p class="key">Min</p><p class="key">Sec</p></div>
+            <h3 class="interval">
                 <input type='number' min="0" max="99" placeholder="00" id="mi0"></input> :
                 <input type='number' min="0" max="59" placeholder="00" id="si0"></input>
-            </h1>
+            </h3>
             <input class="activityBox" id="ai0" type='text' placeholder="activity"></input>  
         </div>
     </div>
     <button onclick="addTimer()" id="addTimer">+</button>
-
-
-
-
-      
-      <!-- where do laps go? -->
-    <p>laps: <span id="lapCount">0</span></p>
-
-
-
-
-    
 </body>
 </html>

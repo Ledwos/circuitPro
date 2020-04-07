@@ -1,25 +1,28 @@
 body {
     text-align: center;
-    /* margin-top: 10%; */
     font-family: Arial, Helvetica, sans-serif;
     background-color: #26272c;
 }
 
 #DisplayBox , #UiBox {
-    /* border: 2px solid red; */
     width: 75%;
     display: inline-block;
     padding: 20px 0px 20px 0px;
 }
 
-#mainTimer, #set, #btnDiv, .timeBox, #addTimer {
-    /* border: 2px solid blue; */
-}
-
 #mainTimer {
-    font-size: 10vw;
+    font-size: 13vw;
     color: rgb(187, 183, 206);
 }
+
+#lapBox {
+    width: 100%;
+    text-align: end;
+    font-size: 25px;
+    color: rgb(187, 183, 206);
+    margin: 0px 0px -20px 0px;
+}
+
 
 #set {
     color: rgb(187, 183, 206);
@@ -36,19 +39,44 @@ body {
 .timeBox {
     display: flex;
     flex-direction: column;
-    width: 35%;
+    max-width: 400px;
     margin: 0 auto;
-    /* justify-content: space-evenly; */
+    margin-bottom: 20px;
     border: 3px solid black;
     border-radius: 10px;
     background-color: #3b3d44;
+    position: relative;
+}
+
+#keyHeader {
+    display: flex;
+    justify-content: center;
+    margin-bottom: -10px;
+}
+
+.key {
+    width: 30%;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 5px 0px -5px -5px;
+}
+
+
+input {
+    padding-left: 10px;
+    width: 20%;
+    background: transparent;
+    border: none;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    font-weight: 700;
 }
 
 .activityBox {
-    width: 50%;
+    padding: 0;
+    width: 100%;
     align-self: center;
-    border-radius: 5px;
-    padding: 10px 20px 10px 20px;
     margin: -15px 0px 10px 0px;
     
 }
@@ -63,8 +91,18 @@ button {
     font-weight: 700;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
 #addTimer {
-    margin-top: 15px;
     width: 25%;
 }
 
+.timTop {
+    position: absolute;
+    text-align: end;
+    padding: 5px;
+    right: 0;
+    margin-bottom: -25px;
+}
