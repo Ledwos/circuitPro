@@ -37,10 +37,13 @@ document.addEventListener("change", (event) => {
     if (aStr == "mi") {
       if (parseInt(aText) > 99) {
         store.mi[aNum] = 99;
+        document.getElementById(event.target.id).value = store.mi[aNum];
       } else if (parseInt(aText) < 0) {
         store.mi[aNum] = 0;
+        document.getElementById(event.target.id).value = store.mi[aNum];
       } else if (aText == "") {
         store.mi[aNum] = 0;
+        document.getElementById(event.target.id).value = store.mi[aNum];
       } else {
         store.mi[aNum] = parseInt(aText);
       }
@@ -49,10 +52,13 @@ document.addEventListener("change", (event) => {
     if (aStr == "si") {
       if (parseInt(aText) > 59) {
         store.si[aNum] = 59;
+        document.getElementById(event.target.id).value = store.si[aNum];
       } else if (parseInt(aText) < 0) {
         store.si[aNum] = 0;
+        document.getElementById(event.target.id).value = store.si[aNum];
       } else if (aText == "") {
         store.si[aNum] = 0;
+        document.getElementById(event.target.id).value = store.si[aNum];
       } 
       else {
         store.si[aNum] = parseInt(aText);
