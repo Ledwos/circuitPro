@@ -51,33 +51,6 @@ document.addEventListener("change", (event) => {
   
 })
 
-//user input (scroll increment)
-
-// document.addEventListener("wheel", function(event) {
-
-//   var spanId = null;
-//   var spanNum = null;
-
-//   if (event.target.nodeName == "SPAN") {
-//     spanId = String(event.target.id).substring(0,2);
-//     spanNum = String(event.target.id).slice(-1);
-//   }
-
-//   if (spanId == "mi" | spanId == "si") {
-//     // console.log(store[spanId][0]);
-//     if (event.deltaY < 0 ) {
-//       store[spanId][spanNum] = store[spanId][spanNum] + 1;
-//       // spanId == "mi" ?  min = store.mi[0] : sec = store.si[0]; //potential fix? can't test till I update timer
-//       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
-//     } else if (event.deltaY > 0) {
-//       store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
-//       // spanId == "mi" ?  min = store[spanId][0] : sec = store[spanId][0]; //potential fix? can't test till I update timer
-//       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
-//     }
-//   }
-
-// })
-
 // start / stop button
 
 var startstop = 0;
