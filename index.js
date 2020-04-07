@@ -4,24 +4,6 @@ var store = {
   mi: [0]
 }
 
-
-//update activity input on change
-
-// window.onload = function() {
-//   const actiBox = document.querySelectorAll("input")
-  
-//   actiBox.addEventListener("change", (event) => {
-//     // var aStr = String(event.target.id).substring(0,2);
-//     var aNum = String(event.target.id).slice(-1)
-//     // console.log(aNum);
-//     var aText = String(event.target.value);
-//     console.log(aText);
-    
-//     store.ai[aNum] = aText;
-//   })
-// }
-
-
 document.addEventListener("change", (event) => {
 
   if (event.target.nodeName == "INPUT") {
@@ -71,30 +53,30 @@ document.addEventListener("change", (event) => {
 
 //user input (scroll increment)
 
-document.addEventListener("wheel", function(event) {
+// document.addEventListener("wheel", function(event) {
 
-  var spanId = null;
-  var spanNum = null;
+//   var spanId = null;
+//   var spanNum = null;
 
-  if (event.target.nodeName == "SPAN") {
-    spanId = String(event.target.id).substring(0,2);
-    spanNum = String(event.target.id).slice(-1);
-  }
+//   if (event.target.nodeName == "SPAN") {
+//     spanId = String(event.target.id).substring(0,2);
+//     spanNum = String(event.target.id).slice(-1);
+//   }
 
-  if (spanId == "mi" | spanId == "si") {
-    // console.log(store[spanId][0]);
-    if (event.deltaY < 0 ) {
-      store[spanId][spanNum] = store[spanId][spanNum] + 1;
-      // spanId == "mi" ?  min = store.mi[0] : sec = store.si[0]; //potential fix? can't test till I update timer
-      document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
-    } else if (event.deltaY > 0) {
-      store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
-      // spanId == "mi" ?  min = store[spanId][0] : sec = store[spanId][0]; //potential fix? can't test till I update timer
-      document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
-    }
-  }
+//   if (spanId == "mi" | spanId == "si") {
+//     // console.log(store[spanId][0]);
+//     if (event.deltaY < 0 ) {
+//       store[spanId][spanNum] = store[spanId][spanNum] + 1;
+//       // spanId == "mi" ?  min = store.mi[0] : sec = store.si[0]; //potential fix? can't test till I update timer
+//       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
+//     } else if (event.deltaY > 0) {
+//       store[spanId][spanNum] === 0 ? store[spanId][spanNum] = 0 : store[spanId][spanNum] = store[spanId][spanNum] - 1;
+//       // spanId == "mi" ?  min = store[spanId][0] : sec = store[spanId][0]; //potential fix? can't test till I update timer
+//       document.getElementById(event.target.id).innerHTML = checkTime(store[spanId][spanNum]);
+//     }
+//   }
 
-})
+// })
 
 // start / stop button
 
@@ -110,7 +92,6 @@ function startStop() { /* Toggle StartStop */
     startstop = 0;
     stop();
   }
-
 }
 
 var tim0 = false
@@ -127,7 +108,7 @@ function initial() {
     msec = 0;
     sec = store.si[0];
     min = store.mi[0];
-    // lap = 0;
+    lap = 0;
     tim0 = true;
   }
   
@@ -144,11 +125,6 @@ var msec = 0;
 var sec = store.si[0];
 var min = store.mi[0];
 var lap = 0;
-
-// var msout = 0;
-// var sout = 0;
-// var mout = 0;
-// var lout = 0; don't need these here? works as intended with the var being declared within the timer function
 
 var msout = checkTime(msec);
 var sout = checkTime(sec);
@@ -191,7 +167,6 @@ function timer() {
   document.getElementById("min").innerHTML = mout;
   document.getElementById("lapCount").innerHTML = lout;
   document.getElementById("set").innerHTML = aout;
-  // setText(lout);
 }
 
 function checkTime(i) {
@@ -217,18 +192,6 @@ function checkTime(i) {
   document.getElementById("set").innerHTML = "Ready?";
 }
 
-// conditional set text 
-
-// function setText(lout) {
-//   if (lout === 0 || lout % 2  === 0) {
-//     document.getElementById("set").innerHTML = "RUN";
-//   } else {
-//     document.getElementById("set").innerHTML = "REST";
-//   }
-// }
-
-// generate additional timer (to build circuit)
-
 function addTimer() {
 
   //extend store arrays to accomodate no. of timers
@@ -240,44 +203,45 @@ function addTimer() {
   var idNum = document.querySelectorAll('.interval').length;
   var minId = "mi" + idNum;
   var secId = "si" + idNum;
-  var msecId = "msi" + idNum;
 
   //make all elements
   var timBox = document.createElement("div");
   timBox.setAttribute("class", "timeBox");
   timBox.setAttribute("id", `t${idNum}`);
-  var divLeft = document.createElement("div");
-  divLeft.setAttribute("class", "timLeft");
-  var divRight = document.createElement("div");
-  divRight.setAttribute("class", "timRight");
+  var divTop = document.createElement("div");
+  divTop.setAttribute("class", "timTop");
+  var divBot = document.createElement("div");
+  divBot.setAttribute("class", "timBot");
   var remBtn = document.createElement("button");
   remBtn.setAttribute("id", `rem${idNum}`);
   remBtn.setAttribute("onclick","remDiv(this.id)");
   remBtn.innerHTML = "X";
-  var tim = document.createElement("h1");
+  var tim = document.createElement("h3");
   tim.setAttribute("class", "interval");
-  var mspan = document.createElement("span");
-  mspan.setAttribute("id", `${minId}`);
-  mspan.innerHTML = "00";
-  var sspan = document.createElement("span");
-  sspan.setAttribute("id", `${secId}`);
-  sspan.innerHTML = "00";
-  var msspan = document.createElement("span");
-  msspan.setAttribute("id", `${msecId}`);  
-  msspan.innerHTML = "00";
+  var mInput = document.createElement("input");
+  mInput.setAttribute("type", "number");
+  mInput.setAttribute("id", `${minId}`);
+  mInput.setAttribute("min", "0");
+  mInput.setAttribute("max", "99");
+  mInput.setAttribute("placeholder", "00");
+  var sInput = document.createElement("input");
+  sInput.setAttribute("type", "number");
+  sInput.setAttribute("id", `${secId}`);
+  sInput.setAttribute("min", "0");
+  sInput.setAttribute("max", "59");
+  sInput.setAttribute("placeholder", "00");
   var actInput = document.createElement("input");
   actInput.setAttribute("class", "activityBox");
   actInput.setAttribute("id", `ai${idNum}`);
   actInput.setAttribute("type", "text");
   actInput.setAttribute("placeholder", "activity");
-  
-  //render elements in their appropriate places
-  tim.innerHTML += mspan.outerHTML + " : " + sspan.outerHTML + " : " + msspan.outerHTML;
-  divLeft.innerHTML += remBtn.outerHTML;
-  divRight.innerHTML += tim.outerHTML + actInput.outerHTML;
-  timBox.innerHTML += divLeft.outerHTML + divRight.outerHTML;
-  document.getElementById("UiBox").appendChild(timBox);
 
+  //render elements in their appropriate places
+  tim.innerHTML += mInput.outerHTML + " : " + sInput.outerHTML;
+  divTop.innerHTML += remBtn.outerHTML;
+  divBot.innerHTML += tim.outerHTML + actInput.outerHTML;
+  timBox.innerHTML += divTop.outerHTML + divBot.outerHTML;
+  document.getElementById("UiBox").appendChild(timBox);
 }
 
 //removeButton - deletes timer
